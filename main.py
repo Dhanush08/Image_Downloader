@@ -9,10 +9,13 @@ window.geometry(f"{window.winfo_screenwidth()}x{window.winfo_screenheight()}")
 
 
 def downloadImage(url, location, filename):
-    response = requests.get(url)
-    with open(location + "\\" + filename, "wb") as picture:
-        picture.write(response.content)
-    messagebox.showinfo("Message Box", "Downloaded")
+    try:
+        response = requests.get(url)
+        with open(location + "\\" + filename, "wb") as picture:
+            picture.write(response.content)
+        messagebox.showinfo("Message Box", "Downloaded")
+    except:
+        messagebox.showinfo("Message Box", "First enter all entries correctly")
 
 
 background_image = tk.PhotoImage(file="mountains5.png")
